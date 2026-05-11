@@ -1,5 +1,3 @@
-import pandas as pd
-
 from load_data import load_ab_test_data
 
 
@@ -22,12 +20,17 @@ print(df.info())
 print("\nMissing values:")
 print(df.isnull().sum())
 
-# -------------------------------------------------------------------
-# ANALYSIS
-# -------------------------------------------------------------------
-
 # Group balance
 print(df["group"].value_counts(normalize=True))
 
 # Actual conversion rate
-print(df.groupby("group")["conversion"].sum()) 
+print("\nActual conversion rate, %:")
+print(df.groupby("group")["conversion"].mean() * 100)
+
+# Revenue metrics by group
+print("\nRevenue metrics by group (mean revenue = ARPU):")
+print(df.groupby("group")["revenue"].agg(["sum", "mean", "count", "min", "max"]))
+
+# Logical validation for conversion_date
+print(df[(df["conversion"] == 1) & (df["conversion_date"].isnull())])
+print(df[(df["conversion"] == 0) & (df["conversion_date"].notnull())])
