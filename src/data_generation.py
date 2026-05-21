@@ -25,7 +25,7 @@ for i in range(1, 10001):
     if group == "A":
         conversion = random.choices((conversion_values), weights=[0.95, 0.05])[0]
     else:
-        conversion = random.choices((conversion_values), weights=[0.93, 0.07])[0]
+        conversion = random.choices((conversion_values), weights=[0.94, 0.06])[0]
     if conversion == 1:
         conversion_date = signup_date + timedelta(days=random.randint(1, 4))
         revenue = random.randint(20, 500)
