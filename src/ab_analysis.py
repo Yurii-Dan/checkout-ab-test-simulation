@@ -1,5 +1,5 @@
 from load_data import load_ab_test_data
-from statsmodels.stats.proportion import proportions_ztest
+from statsmodels.stats.proportion import proportions_ztest, confint_proportions_2indep
 from scipy.stats import ttest_ind
 
 
@@ -63,3 +63,11 @@ if p_value < alpha:
     print("ARPU difference is statistically significant")
 else:
     print("The difference is not statistically significant for ARPU")
+
+# 95% confidence interval for conversion uplift (B - A)
+low, high = confint_proportions_2indep(
+    conversions_B, users_B, conversions_A, users_A, method="wald"
+)
+
+print("\n--- 95% Confidence Interval for Conversion Uplift ---")
+print(f"[{round(low * 100, 2)}%, {round(high * 100, 2)}%]")
