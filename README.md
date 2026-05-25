@@ -32,6 +32,14 @@ In the experimental group (B), a guest checkout flow was introduced, requiring o
 
 ---
 
+## Tools & Technologies
+
+- Python
+- Pandas
+- Tableau
+
+---
+
 ## Project Structure
 
 ```text
@@ -55,7 +63,7 @@ visualization/
 
 Using Python, the following steps were completed:
 
-- generated a synthetic dataset for A/B testing;
+- generated a realistic synthetic dataset simulating user behavior in an e-commerce checkout experiment;
 - performed exploratory data analysis (EDA);
 - conducted a z-test for conversion rate;
 - conducted Welch’s t-test for ARPU;
